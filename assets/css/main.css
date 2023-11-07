@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .router-link-exact-active {
-  color: blue;
+  opacity: 50%;
 }
 section {
   margin-top: 8rem;
@@ -22,4 +22,21 @@ h1, h2 {
 p {
   font-family: Instrument Sans, sans-serif;
   font-weight: 400;
+}
+
+.radial-gradient {
+  position:relative;
+  bottom: 12rem;
+  height: 30rem;
+  background: rgb(14, 143, 193);
+  background: radial-gradient(
+    circle,
+    rgba(14, 143, 193, 1) 0%,
+    rgba(255, 255, 255, 1) 55%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.radial-gradient div h1 {
+  margin-top: 8rem
 }

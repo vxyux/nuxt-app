@@ -57,6 +57,9 @@
       "#mdc-imports": [
         "./file:/Users/kcjliu/Developer/Learn/nuxt-js/nuxt-app/.nuxt/mdc-imports"
       ],
+      "pinia": [
+        "../node_modules/pinia/dist/pinia"
+      ],
       "#content/server": [
         "../node_modules/@nuxt/content/dist/runtime/legacy/server"
       ]
@@ -68,6 +71,7 @@
     "../node_modules/@nuxtjs/google-fonts/runtime/server",
     "../node_modules/@nuxtjs/mdc/runtime/server",
     "../node_modules/@nuxt/content/runtime/server",
+    "../node_modules/@pinia/nuxt/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",

@@ -23,30 +23,39 @@
               An image of a {{ product.title }}
             </figcaption>
           </figure>
-          <div class="radial-gradient">
-            <div v-if="Object.keys(discount).length >= 1">
-              <h1
-                class="line-through mb-4 mt-36 lg:mt-28 lg:mt-0 text-center text-5xl font-extrabold leading-none tracking-tight text-gray-500 md:text-5xl lg:text-6xl dark:text-white"
-              >
-                €{{
-                  Math.floor((product.price / (1 - discount.percentage / 100)) * 100) /
-                  100
-                }}
-              </h1>
-              <h1
-                class="text-center text-6xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-7xl dark:text-white"
-              >
-                €{{ product.price }}
-              </h1>
-            </div>
-            <div v-else>
-              <h1
-                class="text-center text-6xl mt-44 font-extrabold leading-none tracking-tight text-black md:text-5xl lg:text-7xl dark:text-white"
-              >
-                €{{ product.price }}
-              </h1>
-            </div>
+
+          <ProductPricing
+            class="hidden lg:block"
+            :price="product.price"
+            :discount="discount"
+          />
+
+          <div class="sm:mt-10 mb-20 lg:mt-0 lg:mb-0">
+            <p>{{ product.description }}.</p>
           </div>
+
+          <ProductPricing
+            class="block lg:hidden"
+            :price="product.price"
+            :discount="discount"
+          />
+
+          <button
+            v-if="productInCart(product.id)"
+            type="button"
+            class="px-6 py-6 text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <h1 text-lg>Added To Cart</h1>
+          </button>
+
+          <button
+            v-else
+            type="button"
+            @click="addProductToCart(product.id)"
+            class="px-6 py-6 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            <h1 text-lg>Add To Cart</h1>
+          </button>
         </div>
       </section>
     </NuxtLayout>
@@ -54,25 +63,23 @@
 </template>
 
 <script setup lang="ts">
+import { type Product } from "@/types";
+import { useCartStore } from "~/store/cart";
+import { storeToRefs } from "pinia";
+const cartStore = useCartStore();
+const { addProductToCart, productInCart } = cartStore;
+const { cartList } = storeToRefs(cartStore);
+
 import discounts from "../../assets/discounts.json";
+
 const { id } = useRoute().params;
+
 // fetch all the products from the API
-const { data: product } = await useFetch("https://fakestoreapi.com/products/" + id);
+const { data: product } = await useFetch<Product>(
+  "https://fakestoreapi.com/products/" + id
+);
 
 const discount = discounts.find((obj: object) => obj.id == id) || {};
-
-console.log(Object.keys(discount).length);
 </script>
 
-<style>
-.radial-gradient {
-  height: 30rem;
-  background: rgb(14, 143, 193);
-  background: radial-gradient(
-    circle,
-    rgba(14, 143, 193, 1) 0%,
-    rgba(255, 255, 255, 1) 55%,
-    rgba(255, 255, 255, 1) 100%
-  );
-}
-</style>
+<style></style>

@@ -25,7 +25,6 @@
 
 <script setup lang="ts">
 import discounts from "../../assets/discounts.json";
-console.log(discounts);
 // fetch all the products from the API
 const { data: products } = await useFetch("https://fakestoreapi.com/products");
 </script>
