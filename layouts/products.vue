@@ -1,22 +1,12 @@
 <template>
   <div>
     <header>
-      <nav>
-        <NuxtLink to="/products">Index Merch Store</NuxtLink>
-      </nav>
+      <NavBar />
     </header>
     <!-- output the page content here -->
-    <slot />
-    <footer>
-      <nav>
-        <NuxtLink to="/">Index</NuxtLink>
-        <ul>
-          <li><NuxtLink to="/">Home</NuxtLink></li>
-          <li><NuxtLink to="/about">About</NuxtLink></li>
-          <li><NuxtLink to="/products">Products</NuxtLink></li>
-        </ul>
-      </nav>
-    </footer>
+    <div class="container mx-auto p-4">
+      <slot />
+    </div>
   </div>
 </template>
 

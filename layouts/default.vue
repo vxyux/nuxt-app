@@ -1,24 +1,15 @@
 <template>
   <div>
     <header>
-      <nav>
-        <NuxtLink to="/">Index</NuxtLink>
-        <ul>
-          <li><NuxtLink to="/">Home</NuxtLink></li>
-          <li><NuxtLink to="/about">About</NuxtLink></li>
-          <li><NuxtLink to="/products">Products</NuxtLink></li>
-        </ul>
-      </nav>
+      <NavBar />
     </header>
     <!-- output the page content here -->
-    <slot/>
+    <div class="container mx-auto p-4">
+      <slot />
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
