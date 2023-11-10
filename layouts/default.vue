@@ -1,8 +1,5 @@
 <template>
   <div>
-    <header>
-      <NavBar />
-    </header>
     <!-- output the page content here -->
     <div class="container mx-auto p-4">
       <slot />

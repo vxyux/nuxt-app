@@ -8,9 +8,16 @@ export type Product = {
   rating: {
     [key: string]: ProductRating;
   };
+  quantity?: number;
+  discount?: ProductDiscount;
 };
 
 export type ProductRating = {
   rate: number;
   count: number;
+};
+
+export type ProductDiscount = {
+  id: number;
+  percentage: number;
 };

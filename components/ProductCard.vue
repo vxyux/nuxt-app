@@ -47,7 +47,7 @@ export type ProductCardProps = {
   title: string;
   category: string;
   image: string;
-  price: number;
+  price: number | string;
 };
 
 const props = withDefaults(defineProps<ProductCardProps>(), {

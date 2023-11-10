@@ -1,26 +1,28 @@
 <template>
-  <NuxtLayout :name="'products'">
-    <section class="hero">
-      <MainHeading
-        :head="'Products'"
-        :desc="'This is all the products that you can buy off of our website.'"
-      />
-    </section>
-    <section>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        <div v-for="product in products">
-          <ProductCard
-            :id="product.id"
-            :title="product.title"
-            :category="product.category"
-            :image="product.image"
-            :price="product.price"
-            :discount="discounts"
-          ></ProductCard>
+  <div>
+    <NuxtLayout :name="'products'">
+      <section class="hero">
+        <MainHeading
+          :head="'Products'"
+          :desc="'This is all the products that you can buy off of our website.'"
+        />
+      </section>
+      <section>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div v-for="product in products">
+            <ProductCard
+              :id="product.id"
+              :title="product.title"
+              :category="product.category"
+              :image="product.image"
+              :price="product.price"
+              :discount="discounts"
+            ></ProductCard>
+          </div>
         </div>
-      </div>
-    </section>
-  </NuxtLayout>
+      </section>
+    </NuxtLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
